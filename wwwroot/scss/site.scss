@@ -1,0 +1,38 @@
+﻿@import "../lib/bootstrap/dist/scss/bootstrap.scss";
+@import "_variables.scss";
+
+body {
+}
+#intro-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .intro-background {
+        height: 100vh;
+        width: 100%;
+        background-image: url("../assets/img/background.jpeg");
+        background-position: center;
+        background-size: cover;
+        filter: grayscale(80%);
+        position: absolute;
+        z-index: -1;
+    }
+
+    #clip {
+        background-image: url("../assets/img/background.jpeg");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        font-size: 40vw;
+        font-weight: bold;
+        text-align: center;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+        filter: brightness(1.5);
+    }
+}

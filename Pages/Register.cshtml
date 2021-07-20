@@ -1,0 +1,48 @@
+﻿@page
+@model WimStienstra.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+    var settings = {
+        validClass: "is-valid",
+        errorClass: "is-invalid"
+    };
+    $.validator.setDefaults(settings);
+    $.validator.unobtrusive.options = settings;</script>
+}
+
+
+<form method="post">
+    @if (Model.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.Error
+        </div>
+    }
+    <div class="form-group">
+        <label for="inputEmail">E-mail*</label>
+        <input asp-for="User.Email" type="text" class="form-control" id="inputEmail" placeholder="E-mail">
+        <span class="invalid-feedback" asp-validation-for="User.Email"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password*</label>
+        <input asp-for="User.Password" type="text" class="form-control" id="inputPassword" placeholder="Password">
+        <span class="invalid-feedback" asp-validation-for="User.Password"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputConfirmPassword">Confirm password*</label>
+        <input asp-for="User.Password" type="text" class="form-control" id="inputConfirmPassword" placeholder="Confirm password">
+        <span class="invalid-feedback" asp-validation-for="User.ConfirmPassword"></span>
+    </div>
+    <br />
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>

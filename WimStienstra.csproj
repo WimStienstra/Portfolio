@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>9cbf39bb-a4b2-41bd-a2d0-1bad3e6fb223</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\scss\bootstrap.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\lib\bootstrap\dist\scss\bootstrap.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.16.0" />
+    <PackageReference Include="Carter" Version="5.2.0" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="MySql.Data" Version="5.1.7" />
+    <PackageReference Include="PuppeteerSharp" Version="4.0.0" />
+    <PackageReference Include="Westwind.AspNetCore.LiveReload" Version="0.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\icons\" />
+    <Folder Include="wwwroot\assets\saved\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+  </ItemGroup>
+</Project>

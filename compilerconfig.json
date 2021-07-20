@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/bootstrap.css",
+    "inputFile": "wwwroot/lib/bootstrap/dist/scss/bootstrap.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/scss/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/bootstrap-grid.css",
+    "inputFile": "wwwroot/lib/bootstrap/dist/scss/bootstrap-grid.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/bootstrap-reboot.css",
+    "inputFile": "wwwroot/lib/bootstrap/dist/scss/bootstrap-reboot.scss"
+  }
+]
