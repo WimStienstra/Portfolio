@@ -6,10 +6,10 @@ using Dapper;
 using FluentValidation.Resources;
 using Learntennas.Repositories;
 using MySql.Data.MySqlClient;
-using WimStienstra.Models;
-using WimStienstra.Pages.Admin;
+using Portfolio.Models;
+using Portfolio.Pages.Admin;
 
-namespace WimStienstra.Repositories
+namespace Portfolio.Repositories
 {
     public class LanguageRepository
     {

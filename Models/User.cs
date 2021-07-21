@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WimStienstra.Models
+namespace Portfolio.Models
 {
     public class User
     {

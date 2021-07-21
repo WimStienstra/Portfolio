@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Brides.Pages.Shared;
 using Dapper;
 using Learntennas.Repositories;
-using WimStienstra.Models;
+using Portfolio.Models;
 
-namespace WimStienstra.Repositories
+namespace Portfolio.Repositories
 {
     public class UserRepository
     {
@@ -18,11 +18,11 @@ namespace WimStienstra.Repositories
             using var db = DbUtils.GetDbConnection();
             user.Id = db.ExecuteScalar<int>(
                 @"INSERT INTO user (email, password, salt) 
-                    VALUES (@Email, @Password, @Salt); SELECT LAST_INSERT_ID()", new
+                    VALUES (@email, @password, @salt); SELECT LAST_INSERT_ID()", new
                 {
-                    Email = user.Email,
-                    Password = user.Password,
-                    Salt = user.Salt
+                    email = user.Email,
+                    password = user.Password,
+                    salt = user.Salt
                 });
 
             return user;

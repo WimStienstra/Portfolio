@@ -7,10 +7,10 @@ using Brides.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
-using WimStienstra.Models;
-using WimStienstra.Repositories;
+using Portfolio.Models;
+using Portfolio.Repositories;
 
-namespace WimStienstra.Pages
+namespace Portfolio.Pages
 {
     public class RegisterModel : PageModel
     {

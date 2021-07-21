@@ -12,9 +12,9 @@ using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PuppeteerSharp;
-using WimStienstra;
+using Portfolio;
 
-namespace WimStienstra.Pages
+namespace Portfolio.Pages
 {
     public class ScraperModel : PageModel
     {

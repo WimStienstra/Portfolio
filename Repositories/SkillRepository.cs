@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WimStienstra.Repositories
+namespace Portfolio.Repositories
 {
     public class SkillRepository
     {

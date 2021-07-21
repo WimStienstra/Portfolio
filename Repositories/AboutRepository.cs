@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Dapper;
 using Learntennas.Repositories;
 using MySql.Data.MySqlClient;
-using WimStienstra.Models;
+using Portfolio.Models;
 
-namespace WimStienstra.Repositories
+namespace Portfolio.Repositories
 {
     public class AboutRepository
     {

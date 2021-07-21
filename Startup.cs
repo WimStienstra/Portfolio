@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Westwind.AspNetCore.LiveReload;
 
-namespace WimStienstra
+namespace Portfolio
 {
     public class Startup
     {
