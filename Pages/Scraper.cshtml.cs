@@ -19,8 +19,9 @@ namespace WimStienstra.Pages
     public class ScraperModel : PageModel
     {
         AppConfiguration _config;
-        public void OnGet()
+        public void OnGet(AppConfiguration config)
         {
+            _config = config;
             scraper();
             //ScrapeWebsite();
         }

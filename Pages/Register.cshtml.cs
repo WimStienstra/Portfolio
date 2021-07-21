@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Brides.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using WimStienstra.Models;
 using WimStienstra.Repositories;
 
@@ -18,6 +19,13 @@ namespace WimStienstra.Pages
         public string Error { get; set; }
 
         AppConfiguration _config;
+        public IConfiguration Configuration { get; }
+
+        public RegisterModel(AppConfiguration config)
+        {
+            _config = config;
+        }
+
         public void OnGet()
         {
         }

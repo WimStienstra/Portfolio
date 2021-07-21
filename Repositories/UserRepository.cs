@@ -17,7 +17,7 @@ namespace WimStienstra.Repositories
         {
             using var db = DbUtils.GetDbConnection();
             user.Id = db.ExecuteScalar<int>(
-                @"INSERT INTO users (email, password, salt) 
+                @"INSERT INTO user (email, password, salt) 
                     VALUES (@Email, @Password, @Salt); SELECT LAST_INSERT_ID()", new
                 {
                     Email = user.Email,
