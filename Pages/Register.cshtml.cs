@@ -42,7 +42,7 @@ namespace Portfolio.Pages
         /// <summary>
         /// Handles user adding
         /// </summary>
-        /// <returns>Created UserId or 0 if failed</returns>
+        /// <returns>True if success</returns>
         private bool AddUser()
         {
             bool result;

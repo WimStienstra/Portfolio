@@ -27,7 +27,7 @@ namespace Portfolio.Repositories
         /// Adds a language
         /// </summary>
         /// <param name="language">Language information</param>
-        /// <returns>Success </returdsdns>
+        /// <returns>Success </returns>
         public static bool AddLanguage(Languages language)
         {
             using var connect = DbUtils.GetDbConnection();
@@ -106,6 +106,11 @@ namespace Portfolio.Repositories
                 });
         }
 
+        /// <summary>
+        /// Gets the translationId
+        /// </summary>
+        /// <param name="linkId">Link id for the translation</param>
+        /// <returns>Translation Id</returns>
         public static int GetTranslationId(int linkId)
         {
             using var connect = DbUtils.GetDbConnection();

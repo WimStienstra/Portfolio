@@ -14,9 +14,9 @@ namespace Portfolio.Pages
     {
         [BindProperty]
         public User User { get; set; }
-        public bool isValid { get; set; }
+        public bool IsValid { get; set; }
         [BindProperty]
-        public bool rememberMe { get; set; }
+        public bool RememberMe { get; set; }
 
         public IActionResult OnGet()
         {
@@ -39,11 +39,11 @@ namespace Portfolio.Pages
 
                 if (userId != 0)
                 {
-                    Response.Cookies.Append("rememberMe", rememberMe.ToString());
+                    Response.Cookies.Append("rememberMe", RememberMe.ToString());
                     HttpContext.Session.SetInt32("loggedIn", userId);
                     return RedirectToPage("Admin/Home");
                 }
-                isValid = false;
+                IsValid = false;
             }
             return Page();
         }

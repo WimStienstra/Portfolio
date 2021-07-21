@@ -11,6 +11,10 @@ namespace Portfolio.Repositories
 {
     public class AboutRepository
     {
+        /// <summary>
+        /// Gets about information
+        /// </summary>
+        /// <returns>All about information</returns>
         public static About GetAbout()
         {
             using var connect = DbUtils.GetDbConnection();
@@ -22,6 +26,12 @@ namespace Portfolio.Repositories
             );
             return about;
         }
+
+        /// <summary>
+        /// Update about
+        /// </summary>
+        /// <param name="about">New about information</param>
+        /// <returns>True if success</returns>
         public static bool UpdateAbout(Translation about)
         {
             using var connect = DbUtils.GetDbConnection();

@@ -15,6 +15,11 @@ namespace Portfolio.Repositories
     public class UserRepository
     {
 
+        /// <summary>
+        /// Register a new user
+        /// </summary>
+        /// <param name="user">New user information</param>
+        /// <returns>True if success</returns>
         public static bool AddUser(User user)
         {
             using var db = DbUtils.GetDbConnection();
@@ -30,6 +35,12 @@ namespace Portfolio.Repositories
             return registerUser == 1;
         }
 
+        /// <summary>
+        /// Gets a userid by login details
+        /// </summary>
+        /// <param name="email">Login email</param>
+        /// <param name="password">Login password</param>
+        /// <returns>0 if no user is found, userId if found</returns>
         public static int GetUserByLogin(string email, string password)
         {
             using var db = DbUtils.GetDbConnection();
