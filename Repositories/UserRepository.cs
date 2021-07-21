@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Brides.Pages.Shared;
 using Dapper;
-using Learntennas.Repositories;
+using Portfolio.Repositories;
 using Portfolio.Models;
 
 namespace Portfolio.Repositories

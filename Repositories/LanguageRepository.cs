@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using FluentValidation.Resources;
-using Learntennas.Repositories;
+using Portfolio.Repositories;
 using MySql.Data.MySqlClient;
 using Portfolio.Models;
 using Portfolio.Pages.Admin;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace Learntennas.Repositories
+namespace Portfolio.Repositories
 {
     public class DbUtils
     {
