@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Brides.Pages.Shared;
 using Dapper;
+using MySql.Data.MySqlClient;
 using Portfolio.Repositories;
 using Portfolio.Models;
 
@@ -13,26 +15,26 @@ namespace Portfolio.Repositories
     public class UserRepository
     {
 
-        public static User AddUser(User user)
+        public static bool AddUser(User user)
         {
             using var db = DbUtils.GetDbConnection();
-            user.Id = db.ExecuteScalar<int>(
+            var registerUser = db.Execute(
                 @"INSERT INTO user (email, password, salt) 
-                    VALUES (@email, @password, @salt); SELECT LAST_INSERT_ID()", new
+                    VALUES (@Email, @Password, @Salt)", new
                 {
-                    email = user.Email,
-                    password = user.Password,
-                    salt = user.Salt
+                    Email = user.Email,
+                    Password = user.Password,
+                    Salt = user.Salt
                 });
 
-            return user;
+            return registerUser == 1;
         }
 
         public static int GetUserByLogin(string email, string password)
         {
             using var db = DbUtils.GetDbConnection();
             User result = db.QueryFirstOrDefault<User>(
-                "SELECT id, password, salt FROM users WHERE email = @Email", new
+                "SELECT id, password, salt FROM user WHERE email = @Email", new
                 {
                     Email = email
                 });

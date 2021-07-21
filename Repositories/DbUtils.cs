@@ -13,6 +13,7 @@ namespace Portfolio.Repositories
         {
             return new MySqlConnection(
                 "Server = localhost;" +
+                "SSL Mode=None;" +
                 "Port = 3306;" +
                 "Database = portfolio;" +
                 "Uid = root;" +

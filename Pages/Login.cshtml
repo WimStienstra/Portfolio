@@ -1,4 +1,42 @@
 ﻿@page
 @model Portfolio.Pages.LoginModel
 @{
+    ViewData["Title"] = "Login";
 }
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        var settings = {
+            validClass: "is-valid",
+            errorClass: "is-invalid"
+        };
+        $.validator.setDefaults(settings);
+        $.validator.unobtrusive.options = settings;
+    </script>
+}
+
+<div class="card col-xs-12 col-lg-6 mx-auto mt-5">
+    <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <form method="post">
+            <input type="text" class="form-control mt-3" asp-for="User.Email" placeholder="E-mailadres">
+            <input type="password" class="form-control mt-3" asp-for="User.Password" placeholder="Wachtwoord">
+            @if (!Model.isValid)
+            {
+                <span class="invalid-feedback">Incorrecte inloggegevens</span>
+            }
+            <div class="text-center mt-3">
+                <button class="btn btn-primary d-inline" type="submit">Inloggen</button>
+                <div class="custom-control custom-checkbox d-inline ml-3">
+                    <input type="checkbox" asp-for="rememberMe" class="custom-control-input mt-2" id="rememberMeCheckbox">
+                    <label class="custom-control-label" for="rememberMeCheckbox">Remember me</label>
+                </div>
+                <div class="d-block mt-3">
+                    No account yet? <a asp-page="/Register">Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

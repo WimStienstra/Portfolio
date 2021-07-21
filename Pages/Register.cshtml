@@ -10,44 +10,61 @@
     <partial name="_ValidationScriptsPartial" />
 
     <script>
-    var settings = {
-        validClass: "is-valid",
-        errorClass: "is-invalid"
-    };
-    $.validator.setDefaults(settings);
-    $.validator.unobtrusive.options = settings;</script>
+        var settings = {
+            validClass: "is-valid",
+            errorClass: "is-invalid"
+        };
+        $.validator.setDefaults(settings);
+        $.validator.unobtrusive.options = settings;</script>
 }
+<div class="card col-xs-12 col-lg-6 mx-auto mt-5">
+    <div class="card-body">
+        <h5 class="card-title">Register</h5>
+        <form method="post">
+            @if (Model.Error != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Model.Error
+                </div>
+            }
+            <div class="form-group">
+                <label for="inputEmail">E-mail*</label>
+                <input asp-for="@Model.User.Email" type="text" class="form-control" id="inputEmail" placeholder="E-mail">
+                <div class="alert alert-danger invalid-feedback" role="alert">
+                    <span asp-validation-for="@Model.User.Email"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password*</label>
+                <input asp-for="@Model.User.Password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <div class="alert alert-danger invalid-feedback" role="alert">
+                    <span asp-validation-for="@Model.User.Password"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputConfirmPassword">Confirm password*</label>
+                <input asp-for="@Model.User.ConfirmPassword" type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm password">
+                <div class="alert alert-danger invalid-feedback" role="alert">
+                    <span asp-validation-for="@Model.User.ConfirmPassword"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputRegisterSecret">Register Secret*</label>
+                <input asp-for="@Model.User.RegisterSecret" type="text" class="form-control" id="inputRegisterSecret" placeholder="Register Secret">
+                <div class="alert alert-danger invalid-feedback" role="alert">
+                    <span asp-validation-for="@Model.User.RegisterSecret"></span>
+                </div>
+            </div>
+            <br />
+            <div class="text-center mt-3">
 
-
-<form method="post">
-    @if (Model.Error != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @Model.Error
-        </div>
-    }
-    <div class="form-group">
-        <label for="inputEmail">E-mail*</label>
-        <input asp-for="User.Email" type="text" class="form-control" id="inputEmail" placeholder="E-mail">
-        <span class="invalid-feedback" asp-validation-for="User.Email"></span>
+                <div class="d-inline text-center">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <div class="d-block mt-3">
+                    Already have an account? <a asp-page="/Login">Login!</a>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="inputPassword">Password*</label>
-        <input asp-for="User.Password" type="password" class="form-control" id="inputPassword" placeholder="Password">
-        <span class="invalid-feedback" asp-validation-for="User.Password"></span>
-    </div>
-    <div class="form-group">
-        <label for="inputConfirmPassword">Confirm password*</label>
-        <input asp-for="User.ConfirmPassword" type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm password">
-        <span class="invalid-feedback" asp-validation-for="User.ConfirmPassword"></span>
-    </div>
-    <div class="form-group">
-        <label for="inputRegisterSecret">Register Secret*</label>
-        <input asp-for="User.RegisterSecret" type="text" class="form-control" id="inputRegisterSecret" placeholder="Register Secret">
-        <span class="invalid-feedback" asp-validation-for="User.RegisterSecret"></span>
-    </div>
-    <br />
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary">Register</button>
-    </div>
-</form>
+</div>
