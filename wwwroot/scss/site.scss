@@ -1,17 +1,37 @@
 ﻿@import "../lib/bootstrap/dist/scss/bootstrap.scss";
 @import "_variables.scss";
 
-body {
-}
-
 * {
     border-radius: 0 !important;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+}
+
+
 .bg-glass {
     box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, .55);
     border-radius: 5px;
-    background-color: rgba(84, 84, 84, .30);
+    background-color: rgba(84, 84, 84, .3);
+    backdrop-filter: blur(7px);
+}
+
+.bg-glass-primary {
+    box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, .55);
+    border-radius: 5px;
+    background-color: rgba($primary, .3);
+    backdrop-filter: blur(7px);
+}
+
+.bg-glass-secondary {
+    box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, .55);
+    border-radius: 5px;
+    background-color: rgba($secondary, .3);
     backdrop-filter: blur(7px);
 }
 
@@ -35,7 +55,55 @@ a {
     z-index: -1;
 }
 
-#intro-page {
+.side-nav {
+    width: 40px;
+    height: 300px;
+    position: fixed;
+    right: 10px;
+    top: 50vh;
+
+    a {
+        width: 200px;
+        height: 40px;
+        position: relative;
+        right: 100px;
+
+        .dot-container {
+            right: -103px;
+            position: relative;
+
+            .dot {
+                border-radius: 50% !important;
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .text {
+                position: relative;
+                right: 48px;
+                bottom: 27px;
+                width: max-content;
+                color: $white;
+                display: none;
+            }
+        }
+
+        &:hover, &.active {
+            .dot {
+                background-color: lighten(rgba($primary, .3), 50%);
+            }
+
+            .text {
+                display: block;
+            }
+        }
+    }
+}
+
+#home-page {
+}
+
+#intro {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -56,6 +124,7 @@ a {
     }
 
     #clip {
+        z-index: -1;
         background-image: url("../assets/img/background.jpeg");
         background-attachment: fixed;
         background-position: center;
@@ -73,10 +142,12 @@ a {
 
 #login-page {
 }
-#admin-home-page{
+
+#admin-home-page {
     overflow-x: hidden;
-    .card{
-        .icon{
+
+    .card {
+        .icon {
             font-size: 70px;
         }
     }

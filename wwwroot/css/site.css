@@ -7508,10 +7508,28 @@ textarea.form-control-lg {
 * {
   border-radius: 0 !important; }
 
+html {
+  scroll-behavior: smooth; }
+
+body {
+  position: relative; }
+
 .bg-glass {
   box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, 0.55);
   border-radius: 5px;
   background-color: rgba(84, 84, 84, 0.3);
+  backdrop-filter: blur(7px); }
+
+.bg-glass-primary {
+  box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, 0.55);
+  border-radius: 5px;
+  background-color: rgba(139, 109, 177, 0.3);
+  backdrop-filter: blur(7px); }
+
+.bg-glass-secondary {
+  box-shadow: 1px 1px 1em 1px rgba(0, 0, 0, 0.55);
+  border-radius: 5px;
+  background-color: rgba(114, 209, 179, 0.3);
   backdrop-filter: blur(7px); }
 
 a {
@@ -7530,13 +7548,43 @@ a {
   background-size: cover;
   z-index: -1; }
 
-#intro-page {
+.side-nav {
+  width: 40px;
+  height: 300px;
+  position: fixed;
+  right: 10px;
+  top: 50vh; }
+  .side-nav a {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    right: 100px; }
+    .side-nav a .dot-container {
+      right: -103px;
+      position: relative; }
+      .side-nav a .dot-container .dot {
+        border-radius: 50% !important;
+        width: 2rem;
+        height: 2rem; }
+      .side-nav a .dot-container .text {
+        position: relative;
+        right: 48px;
+        bottom: 27px;
+        width: max-content;
+        color: #c5c1bc;
+        display: none; }
+    .side-nav a:hover .dot, .side-nav a.active .dot {
+      background-color: rgba(255, 255, 255, 0.3); }
+    .side-nav a:hover .text, .side-nav a.active .text {
+      display: block; }
+
+#intro {
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center; }
-  #intro-page .intro-background {
+  #intro .intro-background {
     height: 100vh;
     width: 100%;
     background-attachment: fixed;
@@ -7547,7 +7595,8 @@ a {
     filter: grayscale(80%);
     position: absolute;
     z-index: -1; }
-  #intro-page #clip {
+  #intro #clip {
+    z-index: -1;
     background-image: url("../assets/img/background.jpeg");
     background-attachment: fixed;
     background-position: center;
