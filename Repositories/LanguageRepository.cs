@@ -20,7 +20,20 @@ namespace Portfolio.Repositories
         public static int GetHighestTranslationLinkId()
         {
             using var connect = DbUtils.GetDbConnection();
-            return connect.QuerySingleOrDefault<int>("SELECT MAX(id) FROM translation_link");
+            var maxLink = connect.QuerySingleOrDefault("SELECT MAX(id) FROM translation_link");
+            if (maxLink == null)
+                maxLink = 0;
+            return maxLink;
+        }
+
+        /// <summary>
+        /// Gets languages
+        /// </summary>
+        /// <returns>All languages</returns>
+        public static List<Languages> GetLanguages()
+        {
+            using var connect = DbUtils.GetDbConnection();
+            return connect.Query<Languages>("SELECT * FROM language").ToList();
         }
 
         /// <summary>
@@ -58,7 +71,7 @@ namespace Portfolio.Repositories
             using var connect = DbUtils.GetDbConnection();
             try
             {
-                var translationLinkId = GetHighestTranslationLinkId();
+                var translationLinkId = GetHighestTranslationLinkId() + 1;
                 foreach (var translation in translations)
                 {
                     //Inserts the translation

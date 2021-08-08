@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    @if (Url.RouteUrl(ViewContext.RouteData.Values).Contains("Admin"))
+    @if (Url.RouteUrl(ViewContext.RouteData.Values).Contains("Login"))
+    {
+        <main role="main" class="pb-3 mt-5">
+            @RenderBody()
+        </main>
+    }
+    else if (Url.RouteUrl(ViewContext.RouteData.Values).Contains("Admin"))
     {
         <header>
             <nav class="navbar navbar-expand-lg bg-glass position-fixed w-100 top-0">
