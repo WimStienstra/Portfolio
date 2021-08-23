@@ -40,7 +40,6 @@ namespace Portfolio.Repositories
             {
                 var translationId = LanguageRepository.GetTranslation(currentAbout.Link_Id);
 
-
                 var updateAbout = connect.Execute("UPDATE translation SET title = @Brand_Name", new
                 {
                     Image_Id = about.Title,
@@ -48,6 +47,30 @@ namespace Portfolio.Repositories
                 });
 
                 return updateAbout != 0;
+            }
+            catch (MySqlException e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Adds about info to table
+        /// </summary>
+        /// <param name="about">About information</param>
+        /// <returns>Success boolean</returns>
+        public static bool AddAbout(About about)
+        {
+            using var connect = DbUtils.GetDbConnection();
+            try
+            {
+                var result = connect.Execute(
+                    "INSERT INTO about (Image_Id, Link_Id) VALUES (@Image_Id, @Link_Id)", new
+                    {
+                        Image_Id = about.Image_Id == 0 ? null : about.Image_Id,
+                        about.Link_Id
+                    });
+                return result == 1;
             }
             catch (MySqlException e)
             {

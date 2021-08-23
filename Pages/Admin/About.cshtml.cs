@@ -44,18 +44,23 @@ namespace Portfolio.Pages.Admin
 
         public IActionResult OnPost()
         {
-            LanguageRepository.AddTranslation(Translations);
+            About about = new About();
 
-            //if (Photo != null)
-            //{
-            //    var path = Path.Combine(ihostingEnvironment.WebRootPath, "images", Image.Id + " - " + Photo.FileName);
-            //    using (var stream = new FileStream(path, FileMode.Create))
-            //    {
-            //        Photo.CopyToAsync(stream);
-            //        Image.Link_Id = TranslationLink.Id;
-            //        Image.Location = Photo.FileName;
-            //    }
-            //}
+            if (Photo != null)
+            {
+                Image image = new Image();
+                var path = Path.Combine(ihostingEnvironment.WebRootPath, "images", Image.Id + " - " + Photo.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    Photo.CopyToAsync(stream);
+                    //image.Link_Id = Image.Link_Id = TranslationLink.Id;
+                    image.Location = Image.Location = Photo.FileName;
+                    about.Image_Id = ImageRepository.AddImage(image);
+                }
+            }
+
+            about.Link_Id = LanguageRepository.AddTranslation(Translations);
+            AboutRepository.AddAbout(about);
 
             return Page();
         }

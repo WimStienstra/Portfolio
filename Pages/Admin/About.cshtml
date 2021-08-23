@@ -50,6 +50,9 @@
                     }
                     else
                     {
+                        int i = 0;
+
+
                         @foreach (Languages language in Model.Languages)
                         {
                             @language.Language
@@ -57,25 +60,26 @@
                             {
                                 <i class="fas fa-star bg-secondary"></i>
                             }
-                            <input asp-for="@Model.Translations[language.Id].Language_Id" value="@language.Id" type="text" class="form-control" id="inputLanguageId" placeholder="LanguageId">
+                            <input hidden="true" asp-for="@Model.Translations[i].Language_Id" value="@language.Id" type="text" class="form-control" id="inputLanguageId" placeholder="LanguageId">
                             <div class="form-group">
                                 <label for="inputEmail">Title*</label>
-                                <input asp-for="@Model.Translations[language.Id].Title" type="text" class="form-control" id="inputTitle" placeholder="Title">
+                                <input asp-for="@Model.Translations[i].Title" type="text" class="form-control" id="inputTitle" placeholder="Title">
                                 <div class="alert alert-danger invalid-feedback" role="alert">
-                                    <span asp-validation-for="@Model.Translations[language.Id].Title"></span>
+                                    <span asp-validation-for="@Model.Translations[i].Title"></span>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputEmail">Description*</label>
-                                <input asp-for="@Model.Translations[language.Id].Description" type="text" class="form-control" id="inputDescription" placeholder="Description">
+                                <input asp-for="@Model.Translations[i].Description" type="text" class="form-control" id="inputDescription" placeholder="Description">
                                 <div class="alert alert-danger invalid-feedback" role="alert">
-                                    <span asp-validation-for="@Model.Translations[language.Id].Description"></span>
+                                    <span asp-validation-for="@Model.Translations[i].Description"></span>
                                 </div>
                             </div>
+                            i++;
                         }
                         <div class="form-group">
-                            <label class="form-label" for="image">Voertuigfoto</label>
+                            <label class="form-label" for="image">Afbeelding</label>
                             <input accept="image/*" type="file" class="form-control" id="image" asp-for="Photo" />
                             <span class="invalid-feedback" asp-validation-for="Photo"></span>
                         </div>

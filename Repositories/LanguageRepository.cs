@@ -17,12 +17,12 @@ namespace Portfolio.Repositories
         /// Gets the highest current translation link id
         /// </summary>
         /// <returns>Highest translationLink ID</returns>
-        public static int GetHighestTranslationLinkId()
+        public static int? GetHighestTranslationLinkId()
         {
             using var connect = DbUtils.GetDbConnection();
-            var maxLink = connect.QuerySingleOrDefault("SELECT MAX(id) FROM translation_link");
+            int? maxLink = connect.QueryFirstOrDefault<int?>("SELECT MAX(id) FROM translation_link");
             if (maxLink == null)
-                maxLink = 0;
+                return 0;
             return maxLink;
         }
 
@@ -65,18 +65,18 @@ namespace Portfolio.Repositories
         /// Adds translation and sets the correct ID's in the translation_link table
         /// </summary>
         /// <param name="translations">List with all translations</param>
-        /// <returns>Success boolean</returns>
-        public static bool AddTranslation(List<Translation> translations)
+        /// <returns>TranslationLinkId, linked translation</returns>
+        public static int AddTranslation(List<Translation> translations)
         {
             using var connect = DbUtils.GetDbConnection();
             try
             {
-                var translationLinkId = GetHighestTranslationLinkId() + 1;
+                var translationLinkId = (int)(GetHighestTranslationLinkId() + 1);
                 foreach (var translation in translations)
                 {
                     //Inserts the translation
                     var translationResult = connect.ExecuteScalar(
-                        "INSERT INTO translation (Language_Id, Title, Description) VALUES (@Language_Id, @Title, @Description)",
+                        "INSERT INTO translation (Language_Id, Title, Description) VALUES (@Language_Id, @Title, @Description); SELECT LAST_INSERT_ID();",
                         new
                         {
                             translation.Language_Id,
@@ -93,15 +93,16 @@ namespace Portfolio.Repositories
                                 Id = translationLinkId,
                                 Translation_Id = translationResult
                             });
-                        return translationLinkResult == 1;
+                        if (translationLinkResult == 0)
+                            break;
                     }
                 }
 
-                return false;
+                return translationLinkId;
             }
             catch (MySqlException e)
             {
-                return false;
+                return 0;
             }
         }
         /// <summary>
