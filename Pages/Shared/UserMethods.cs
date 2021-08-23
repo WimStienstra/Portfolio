@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Brides.Pages.Shared
+using System.IO;
+using System.Reflection;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Portfolio.Models;
+using Portfolio.Repositories;
+
+namespace Portfolio.Pages.Shared
 {
     public class UserMethods
     {
@@ -49,25 +52,6 @@ namespace Brides.Pages.Shared
             return algorithm.ComputeHash(plainTextWithSaltBytes);
         }
 
-        /// <summary>
-        /// Generates random Weddingcode
-        /// </summary>
-        /// <returns>string Weddingcode</returns>
-        public static string GenerateWeddingCode()
-        {
-            char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
-            byte[] data = new byte[6];
-            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
-            {
-                crypto.GetBytes(data);
-            }
-            StringBuilder result = new StringBuilder(6);
-            foreach (byte b in data)
-            {
-                result.Append(chars[b % (chars.Length)]);
-            }
-            return result.ToString();
-        }
 
         /// <summary>
         /// Capitalizes every word in the string
@@ -98,6 +82,24 @@ namespace Brides.Pages.Shared
                 }
             }
             return new string(array);
+        }
+
+        public int SaveImage(IFormFile photo, int id)
+        {
+            if (photo != null)
+            {
+                Image image = new Image();
+                var path = Path.Combine(Path.GetFullPath("wwwroot"), "images", id + " - " + photo.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    photo.CopyToAsync(stream);
+                    //TODO: add link id to images
+                    //image.Link_Id = Image.Link_Id = TranslationLink.Id;
+                    image.Location = photo.FileName;
+                    return ImageRepository.AddImage(image);
+                }
+            }
+            return 0;
         }
     }
 }

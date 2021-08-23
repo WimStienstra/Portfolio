@@ -4,11 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brides.Pages.Shared;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Portfolio.Repositories;
 using Portfolio.Models;
+using Portfolio.Pages.Shared;
 
 namespace Portfolio.Repositories
 {
